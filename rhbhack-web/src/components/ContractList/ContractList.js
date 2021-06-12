@@ -18,6 +18,10 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 import UI from '../../assets/UI.png';
+import BE from '../../assets/BE.png';
+import DS from '../../assets/DS.png';
+import ML from '../../assets/ML.png';
+import FE from '../../assets/FE.png';
 import ApplyContractForm from '../ApplyContractForm/ApplyContractForm';
 
 
@@ -45,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ContractList = () => {
+const ContractList = (props) => {
     const classes = useStyles();
     const [expanded, setExpanded] = useState(false);
     const [imgName, setImgName] = useState();
@@ -53,6 +57,8 @@ const ContractList = () => {
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+
+    console.log(props);
 
     return (
         <Card className={classes.root}>
@@ -70,7 +76,7 @@ const ContractList = () => {
                 title="Power BI Data Visualization"
                 subheader="Application deadline: "
             />
-            <CardMedia component="img" image={UI} height="150" title="Paella dish" />
+            <CardMedia component="img" image={props.skill} height="150" title="Paella dish" />
             <CardContent>
                 <IconButton aria-label="add to favorites">
                     <Typography variant="body2"><AttachMoneyOutlinedIcon fontSize="small" />RM1000</Typography>

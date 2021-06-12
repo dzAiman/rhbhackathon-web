@@ -23,6 +23,11 @@ const useStyles = makeStyles((theme) => ({
 function App() {
 
   const classes = useStyles();
+  const a1 = "UI";
+  const a2 = "DS";
+  const a3 = "ML";
+  const a4 = "BE";
+  const a5 = "FE";
 
   return (
     <div className={classes.root}>
@@ -39,11 +44,11 @@ function App() {
           <ContractList />
       </Grid>
       <Grid item xs={4} direction="row">
-        <ContractList />
-        <ContractList />
-        <ContractList />
-        <ContractList />
-        <ContractList />
+        <ContractList skill={a1}/>
+        <ContractList skill={a2}/>
+        <ContractList skill={a3}/>
+        <ContractList skill={a4}/>
+        <ContractList skill={a5}/>
       </Grid>
       <Grid item xs={'auto'} spacing={3}>
         <Grid container>

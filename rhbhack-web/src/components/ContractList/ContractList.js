@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -23,7 +23,9 @@ import DS from '../../assets/DS.png';
 import ML from '../../assets/ML.png';
 import FE from '../../assets/FE.png';
 import ApplyContractForm from '../ApplyContractForm/ApplyContractForm';
-
+// import Api from '../../api/api';
+// 1. Import axios function
+import { getContracts } from '../../api/ContractFetch';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -49,66 +51,94 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ContractList = (props) => {
+
+
+const ContractList = () => {
     const classes = useStyles();
     const [expanded, setExpanded] = useState(false);
     const [imgName, setImgName] = useState();
+    // 2. Set props
+    const [contract, setContract] = useState([]);
+
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
 
-    console.log(props);
+    // 3. Copy this
+    useEffect(() => {
+        let mounted = true;
+        getContracts()
+            .then(items => {
+                if (mounted) {
+                    setContract(items)
+                }
+            })
+        return () => mounted = false;
+    }, [])
+
+
+
+    // For understanding
+    console.log(contract);
+
+    contract.map(x => {
+        if (x.category == 'Data Science') {
+            x.imageVar = DS;
+        }
+    })
+
+
 
     return (
-        <Card className={classes.root}>
-            <CardHeader
-                avatar={
-                    <Avatar aria-label="recipe" className={classes.avatar}>
-                        R
-                    </Avatar>
-                }
-                action={
-                    <IconButton aria-label="settings">
-                        <ApplyContractForm />
-                    </IconButton>
-                }
-                title="Power BI Data Visualization"
-                subheader="Application deadline: "
-            />
-            <CardMedia component="img" image={props.skill} height="150" title="Paella dish" />
-            <CardContent>
-                <IconButton aria-label="add to favorites">
-                    <Typography variant="body2"><AttachMoneyOutlinedIcon fontSize="small" />RM1000</Typography>
-                </IconButton>
-                <IconButton aria-label="share">
-                    <Typography variant="body2">Skillset: Beginner</Typography>
-                </IconButton>
-                <IconButton
-                    className={clsx(classes.expand, {
-                        [classes.expandOpen]: expanded,
-                    })}
-                    onClick={handleExpandClick}
-                    aria-expanded={expanded}
-                    aria-label="show more"
-                >
-                    <ExpandMoreIcon />
-                </IconButton>
-            </CardContent>
-            <CardActions disableSpacing>
+        // Add a div here for wrapper
+        <div>
+            {contract.map(x => (
+                <Card className={classes.root}>
+                    <CardHeader
+                        action={
+                            <IconButton aria-label="settings">
+                                <ApplyContractForm />
+                            </IconButton>
+                        }
+                        title={x.title}
+                        subheader={"Application deadline: " + x.applicationDeadline}
+                    />
+                    <CardMedia component="img" image={x.imageVar} height="150" title="Paella dish" />
+                    <CardContent>
+                        <IconButton aria-label="add to favorites">
+                            <Typography variant="body2">Incentives: {x.reward}</Typography>
+                        </IconButton>
+                        <IconButton aria-label="share">
+                            <Typography variant="body2">Skillset: {x.expRequired}</Typography>
+                        </IconButton>
+                        <IconButton
+                            className={clsx(classes.expand, {
+                                [classes.expandOpen]: expanded,
+                            })}
+                            onClick={handleExpandClick}
+                            aria-expanded={expanded}
+                            aria-label="show more"
+                        >
+                            <ExpandMoreIcon />
+                        </IconButton>
+                    </CardContent>
+                    <CardActions disableSpacing>
 
-            </CardActions>
-            <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <CardContent>
-                    <Typography paragraph>Method:</Typography>
-                    <Typography paragraph>
-                        Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-                        minutes.
-                    </Typography>
-                </CardContent>
-            </Collapse>
-        </Card>
+                    </CardActions>
+                    <Collapse in={expanded} timeout="auto" unmountOnExit>
+                        <CardContent>
+                            <Typography paragraph>Description:</Typography>
+                            <Typography paragraph>
+                                {x.description}
+                            </Typography>
+                        </CardContent>
+                    </Collapse>
+                </Card>
+            ))}
+        </div>
     )
+
 }
 
 export default ContractList;

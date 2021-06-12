@@ -23,7 +23,7 @@ import Fade from '@material-ui/core/Fade';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 345,
+    maxWidth: '100%',
   },
   media: {
     height: 0,
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
   expand: {
     transform: 'rotate(0deg)',
-    marginLeft: 'auto',
+    // marginLeft: 'auto',
     transition: theme.transitions.create('transform', {
       duration: theme.transitions.duration.shortest,
     }),
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     transform: 'rotate(180deg)',
   },
   avatar: {
-    backgroundColor: red[500],
+    backgroundColor: '#70CDE3',
   },
   modal: {
     display: 'flex',
@@ -76,17 +76,17 @@ export default function RecipeReviewCard() {
 
   return (
     <Card className={classes.root}>
-      <CardHeader
+      <CardHeader style={{ marginRight:'40%'}}
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
             DT
           </Avatar>
         }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
+        // action={
+        //   <IconButton aria-label="settings">
+        //     <MoreVertIcon />
+        //   </IconButton>
+        // }
         title="Setting Up Docker"
         subheader="May 14, 2021"
       />
@@ -99,7 +99,7 @@ export default function RecipeReviewCard() {
         <IconButton aria-label="join newsletter">
           <PersonAddIcon/>
         </IconButton>
-        <Button variant="contained" color="primary" onClick={handleOpen} style={{ marginLeft: "auto" }}> Get Details </Button>
+        <Button variant="contained" color="primary" onClick={handleOpen} style={{ marginLeft: "auto",  backgroundColor:'#EF3E42'}}> Get Details </Button>
         <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -125,26 +125,7 @@ export default function RecipeReviewCard() {
           </div>
         </Fade>
       </Modal>
-        {/* <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton> */}
       </CardActions>
-      {/* <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>In Details:</Typography>
-          <Typography paragraph>
-           
-          </Typography>
-          
-        </CardContent>
-      </Collapse> */}
     </Card>
   );
 }

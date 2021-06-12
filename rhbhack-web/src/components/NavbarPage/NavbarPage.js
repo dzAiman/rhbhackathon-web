@@ -1,8 +1,9 @@
 import React from 'react'
 import { Navbar } from 'react-bootstrap'
 const NavbarPage = () => {
+
     return (
-      <Navbar>
+      <Navbar style={{backgroundColor:'#70CDE3'}}>
         <Navbar.Brand href="#home">RHB @ Workforce Gigs</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">

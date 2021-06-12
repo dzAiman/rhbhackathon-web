@@ -9,6 +9,8 @@ import ReactDOM from 'react-dom';
 import Jobs from './components/Jobs/Jobs.js';
 // import Grid from '@material-ui/core/Grid';
 
+// import UserFetch from './api/UserFetch';
+// import { getUser } from './api/UserFetch.js';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,12 +27,16 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
 
+  // const [user, setUser] = useState([]);
+
   const classes = useStyles();
   const a1 = "UI";
   const a2 = "DS";
   const a3 = "ML";
   const a4 = "BE";
   const a5 = "FE";
+
+  
 
   return (
     <div className={classes.root}>
@@ -40,10 +46,10 @@ function App() {
         </Grid>
         <Grid item xs={12} spacing={3}>
           <CreateContract />
+          {/* <UserFetch /> */}
         </Grid>
       </Grid>
       <Grid item xs={8}>
-          <ContractList />
           <ContractList />
       </Grid>
       <Grid item xs={'auto'} spacing={3}>

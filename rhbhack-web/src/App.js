@@ -48,13 +48,13 @@ function App() {
       <Grid item xs={8}>
           <ContractList />
       </Grid>
-      <Grid item xs={4} direction="row">
+      {/* <Grid item xs={4} direction="row">
         <ContractList skill={a1}/>
         <ContractList skill={a2}/>
         <ContractList skill={a3}/>
         <ContractList skill={a4}/>
         <ContractList skill={a5}/>
-      </Grid>
+      </Grid> */}
       <Grid item xs={'auto'} spacing={3}>
         <Grid container>
           <Card style={{ width: '18rem', spacing: '5' }}>

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Container, ListGroup, Card, Button, Row, Col } from 'react-bootstrap'
-import { Grid } from "@material-ui/core";
+// import { Grid } from "@material-ui/core";
 import NavbarPage from './components/NavbarPage/NavbarPage.js';
 import CreateContract from './components/CreateContract/CreateContract.js';
 import ContractList from "./components/ContractList/ContractList.js";
 import { makeStyles } from '@material-ui/core/styles';
 import ReactDOM from 'react-dom';
 import Jobs from './components/Jobs/Jobs.js';
-// import Grid from '@material-ui/core/Grid';
+import Grid from '@material-ui/core/Grid';
 
 // import UserFetch from './api/UserFetch';
 // import { getUser } from './api/UserFetch.js';
@@ -35,28 +35,27 @@ function App() {
   const a3 = "ML";
   const a4 = "BE";
   const a5 = "FE";
-
-  
+ 
 
   return (
     <div className={classes.root}>
-      <Grid container>
-        <Grid item xs={12} spacing={3}>
-          <NavbarPage />
-        </Grid>
-        <Grid item xs={12} spacing={3}>
-          <CreateContract />
+        <NavbarPage />
+      <Container>
+        <br></br>
+      <Grid container spacing={3}>
+         <Grid item xs={8}>
+          {/* <CreateContract /> */}
           {/* <UserFetch /> */}
-        </Grid>
-      </Grid>
-      <Grid item xs={8}>
           <ContractList />
+          
+        </Grid>            
+      <Grid item xs={4} >
+        {/* <Grid container direction="column"> */}
+          <Jobs />
+        {/* </Grid> */}
       </Grid>
-      <Grid item xs={'auto'} spacing={3}>
-        <Grid container>
-          <Jobs/>
-        </Grid>
       </Grid>
+      </Container>
     </div>
   );
 }

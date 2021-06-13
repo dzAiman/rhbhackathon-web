@@ -11,6 +11,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import { Link } from 'react-router-dom';
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -70,9 +71,11 @@ const NavbarPage = () => {
           >
             <MenuIcon />
           </IconButton>
+          <Link to ="/">
           <Typography className={classes.title} variant="h6" noWrap>
             RHB @ Workforce Contracts
           </Typography>
+          </Link>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 4 new mails" color="inherit">
@@ -91,7 +94,7 @@ const NavbarPage = () => {
               aria-haspopup="true"
               color="inherit"
             >
-              <AccountCircle />
+              <Link to="/admin"><AccountCircle /></Link>
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>

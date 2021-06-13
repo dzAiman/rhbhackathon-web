@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Container, ListGroup, Card, Button, Row, Col } from 'react-bootstrap'
-import { Grid } from "@material-ui/core";
 import NavbarPage from '../NavbarPage/NavbarPage.js';
 import CreateContract from '../CreateContract/CreateContract.js';
 import ContractList from "../ContractList/ContractList";
@@ -8,14 +6,39 @@ import { makeStyles } from '@material-ui/core/styles';
 // import UserFetch from './api/UserFetch';
 // import { getUser } from './api/UserFetch.js';
 import Jobs from '../Jobs/Jobs';
+import {
+    Card,
+    CardActions,
+    CardContent,
+    CardActionArea,
+    CardMedia,
+    Typography,
+    IconButton,
+    Paper,
+    Link,
+    Grid,
+    Button,
+    CssBaseline,
+    RadioGroup,
+    FormLabel,
+    MenuItem,
+    FormGroup,
+    FormControl,
+    FormControlLabel,
+} from "@material-ui/core";
+import StatusPNG from '../../assets/status.png';
+import CategoryPNG from '../../assets/category.png';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
     paper: {
-        height: 140,
-        width: 100,
+        height: '100%',
+        width: '100%',
+    },
+    media: {
+        height: 150,
     },
     control: {
         padding: theme.spacing(2),
@@ -30,23 +53,47 @@ const Admin = () => {
 
     return (
         <div className={classes.root}>
-            {/* <Grid container> */}
-            {/* <Grid item xs={12} spacing={3}> */}
-            {/* <CreateContract /> */}
-            {/* </Grid> */}
-            {/* </Grid> */}
-            <Container>
-                <Grid container>
-                    <Grid item xs={8}>
-                        <CreateContract />
+            <Grid container direction="column" alignItems="center" justify="center">
+                <Grid item justify="center" xs={12}>
+                    <CreateContract />
+                </Grid>
+                <Grid container justify="center" alignItems="center" direction="row">
+                    <Grid item xs={4}>
+                        <Card className={classes.root}>
+                            <CardActionArea>
+                                <CardMedia
+                                    className={classes.media}
+                                    image={StatusPNG}
+                                    title="Contemplative Reptile"
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="h2">
+                                        Application Status
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
                     </Grid>
-                    <Grid item xs={4} >
-                        <Jobs />
+                    <Grid item xs={4}>
+                        <Card className={classes.root}>
+                            <CardActionArea>
+                                <CardMedia
+                                    className={classes.media}
+                                    image={CategoryPNG}
+                                    title="Contemplative Reptile"
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="h2">
+                                        Category Percentage
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
                     </Grid>
                 </Grid>
-            </Container>
-    </div>
-            );
+            </Grid>
+        </div>
+    );
 }
 
-            export default Admin;
+export default Admin;

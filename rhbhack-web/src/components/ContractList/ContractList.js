@@ -16,6 +16,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import AttachMoneyOutlinedIcon from '@material-ui/icons/AttachMoneyOutlined';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Grid from '@material-ui/core/Grid';
 
 import UI from '../../assets/UI.png';
 import BE from '../../assets/BE.png';
@@ -29,7 +30,7 @@ import { getContracts } from '../../api/ContractFetch';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 545,
+        maxWidth: '95%',
     },
     media: {
         height: 150,
@@ -49,13 +50,14 @@ const useStyles = makeStyles((theme) => ({
     avatar: {
         backgroundColor: red[500],
     },
+ 
 }));
 
 
 
-const ContractList = () => {
+const ContractList = () => {            
     const classes = useStyles();
-    const [expanded, setExpanded] = useState(false);
+    const [expanded, setExpanded] = useState(false);    
     const [imgName, setImgName] = useState();
     // 2. Set props
     const [contract, setContract] = useState([]);
@@ -94,6 +96,8 @@ const ContractList = () => {
         // Add a div here for wrapper
         <div>
             {contract.map(x => (
+                <Grid container direction="column" spacing={3}>
+                <Grid item xs>
                 <Card className={classes.root}>
                     <CardHeader
                         action={
@@ -134,7 +138,8 @@ const ContractList = () => {
                             </Typography>
                         </CardContent>
                     </Collapse>
-                </Card>
+                    {/* <div style={{ height: 1,width:  '100%',backgroundColor: '#bdbdbd',}}></div> */}
+                </Card></Grid></Grid>             
             ))}
         </div>
     )

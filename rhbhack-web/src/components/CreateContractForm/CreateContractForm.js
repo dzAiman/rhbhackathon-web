@@ -27,8 +27,8 @@ const rand = () => {
 }
 
 const getModalStyle = () => {
-    const top = 50 + rand();
-    const left = 50 + rand();
+    const top = 50;
+    const left = 50;
     return {
         top: `${top}%`,
         left: `${left}%`,
@@ -86,7 +86,7 @@ const CreateContractForm = () => {
     return (
         <div>
             <Button variant="contained" color="primary" onClick={handleOpen}>
-                Submit Contract
+                Create Contract
             </Button>
 
             <Modal
@@ -342,7 +342,6 @@ const CreateContractForm = () => {
                                         </Grid>
                                     </Grid>
                                 </Paper>
-                                <pre>{JSON.stringify(values, 0, 2)}</pre>
                             </form>
                         )}
                     />

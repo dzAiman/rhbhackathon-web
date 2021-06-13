@@ -8,9 +8,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import ReactDOM from 'react-dom';
 import Jobs from './components/Jobs/Jobs.js';
 import Grid from '@material-ui/core/Grid';
-
-// import UserFetch from './api/UserFetch';
-// import { getUser } from './api/UserFetch.js';
+import Admin from "./components/Admin/Admin.js";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,34 +34,42 @@ function App() {
   // const [user, setUser] = useState([]);
 
   const classes = useStyles();
-  const a1 = "UI";
-  const a2 = "DS";
-  const a3 = "ML";
-  const a4 = "BE";
-  const a5 = "FE";
- 
+
+  // return (
+  //   <div className={classes.root}>
+  //       <NavbarPage />
+  //     <Container>
+  //       <br></br>
+  //     <Grid container spacing={3}>
+  //        <Grid item xs={8}>
+  //         {/* <CreateContract /> */}
+  //         {/* <UserFetch /> */}
 
   return (
     <div className={classes.root}>
-        <NavbarPage />
-      <Container>
-        <br></br>
-      <Grid container spacing={3}>
-         <Grid item xs={8}>
-          {/* <CreateContract /> */}
-          {/* <UserFetch /> */}
-          <ContractList />
-          
-        </Grid>            
-      <Grid item xs={4} >
-        {/* <Grid container direction="column"> */}
-          <Jobs />
-        {/* </Grid> */}
-      </Grid>
-      </Grid>
-      </Container>
+        <Container>
+          <Grid container>
+            <Grid item xs={8}>
+              <ContractList />
+            </Grid>
+            <Grid item xs={4} >
+              <Jobs />
+            </Grid>
+          </Grid>
+          {/* <Switch>
+            <Route path="/admin">
+              <Admin />
+            </Route>
+          </Switch> */}
+        </Container>
     </div>
   );
+
+  // function Admin() {
+  //   return 
+  //   <Admin />
+  // }
+
 }
 
 export default App;
